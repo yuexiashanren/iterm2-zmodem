@@ -1,1 +1,27 @@
 # add iterm2-recv-zmodem.sh and iterm2-send-zmodem.sh
+
+1、安装iterm2
+brew cask install iterm2
+
+2、安装lrzsz
+brew install lrzsz
+
+3、下载iterm2-zmodem脚本
+将iterm2-send-zmodem.sh & iterm2-recv-zmodem.sh放到/usr/local/bin/路径下，并添加权限：
+chmod 777 iterm2-XXXX
+
+4、配置iterm2 Trigger
+打开iterm  =》  preferences  =》  profiles  =》  default  =》  advanced  =>  trigger  =>  edit  =>  新增下面两条记录![在这里插入图片描述](https://img-blog.csdnimg.cn/20191226234703990.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMwOTk3NTAz,size_16,color_FFFFFF,t_70)
+
+第一条是发送 “sz”
+Regular expression:\*\*B0100
+Action: Run Silent Coprocess
+Parameters: /usr/local/bin/iterm2-send-zmodem.sh
+第二条是接收“rz”
+Regular expression:\*\*B00000000000000
+Action: Run Silent Coprocess
+Parameters: /usr/local/bin/iterm2-recv-zmodem.sh
+
+
+详细地址：
+https://blog.csdn.net/qq_30997503/article/details/103721701
